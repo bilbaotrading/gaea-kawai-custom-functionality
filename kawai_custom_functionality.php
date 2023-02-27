@@ -19,24 +19,24 @@ function kawaispain_custom_date_format( $date_format ) {
 
 add_filter( 'timeline_express_custom_date_format' , 'kawaispain_custom_date_format' , 10 );
 
+/******************************************************************************
+ *
+ * WOOCOMMERCE
+ *
+ *****************************************************************************/
 
-/** 
- * Remove on single product panel 'Additional Information' since it already says it on tab.
+/*
+ * Rename 'Additional Infomation' tab heading text
+ *
+ * See https://www.pivotaltracker.com/story/show/184577481 for more information.
  */
-function kawaispain_product_additional_information_heading() {
-    echo '';
-}
+add_filter( 'woocommerce_product_tabs', 'gaea_woo_rename_tabs', 98 );
 
-add_filter('woocommerce_product_additional_information_heading', 'kawaispain_product_additional_information_heading');
- 
-/** 
- * Remove on single product panel 'Additional Information' since it already says it on tab.
- */
-function kawaispain_product_description_heading() {
-    echo '';
-}
+function gaea_woo_rename_tabs( $tabs ) {
+    $tabs[ 'additional_information' ][ 'title' ] = 'Especificaciones' ;
 
-add_filter('woocommerce_product_description_heading', 'kawaispain_product_description_heading');
+    return $tabs;
+}
 
 /******************************************************************************
  *
