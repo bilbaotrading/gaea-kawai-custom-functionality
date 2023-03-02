@@ -38,6 +38,18 @@ function gaea_woo_rename_tabs( $tabs ) {
     return $tabs;
 }
 
+/*
+ * Remove the 'Additional Information' heading text
+ *
+ * See https://www.pivotaltracker.com/story/show/184580409 for more information.
+ */
+add_filter( 'woocommerce_product_additional_information_heading',
+	'gaea_woo_additional_info_heading' );
+
+function gaea_woo_additional_info_heading() {
+	return null;
+}
+
 /******************************************************************************
  *
  * GRAVITY FORMS VALIDATION
